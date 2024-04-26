@@ -335,6 +335,8 @@ void R_DrawFuzzColumn (void)
 
 	frac += fracstep; 
     } while (count--); 
+    // To keep compiler happy
+    (void)frac;
 } 
 
 // low detail mode version
@@ -403,6 +405,8 @@ void R_DrawFuzzColumnLow (void)
 
 	frac += fracstep; 
     } while (count--); 
+    // To keep compiler happy
+    (void)frac;
 } 
  
   
