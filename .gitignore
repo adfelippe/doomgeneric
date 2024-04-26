@@ -3,6 +3,8 @@
 *.DS_Store
 *.log
 *.user
+*.map
+**/build/*
 .vs/
 Debug/
 Release/
