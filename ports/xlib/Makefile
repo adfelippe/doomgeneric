@@ -12,8 +12,8 @@ else
 endif
 
 # doomgeneric source/include files dir
-SRC_DIR = ../../doomgeneric	# in reference to ./build
-INC_DIR = ../doomgeneric
+SRC_DIR = ../../doomgeneric
+INC_DIR = ../../doomgeneric
 
 CC=clang  # gcc or g++
 CFLAGS+=-ggdb3 -Os
@@ -23,7 +23,7 @@ LIBS+=-lm -lc -lX11
 
 # subdirectory for objects
 OBJDIR=build
-OUTPUT=doomgeneric
+OUTPUT=$(OBJDIR)/doomgeneric
 
 SRC_DOOM = 	dummy.o \
 			am_map.o \
@@ -111,7 +111,6 @@ OBJS += $(addprefix $(OBJDIR)/, $(SRC_DOOM))
 
 all:	 $(OUTPUT)
 
-
 clean:
 	rm -rf $(OBJDIR)
 	rm -f $(OUTPUT)
@@ -129,6 +128,10 @@ $(OBJS): | $(OBJDIR)
 
 $(OBJDIR):
 	mkdir -p $(OBJDIR)
+
+$(OBJDIR)/doomgeneric_xlib.o:	doomgeneric_xlib.c
+	@echo [Compiling $<]
+	$(VB)$(CC) $(CFLAGS) -c $< -o $@
 
 $(OBJDIR)/%.o:	$(SRC_DIR)/%.c
 	@echo [Compiling $<]
